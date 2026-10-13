@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Netflix · O túnel do catálogo — conceito Connect Alpha</title>
+<meta name="description" content="Conceito independente: um túnel 3D de pôsteres que você atravessa rolando a página, do escuro ao play. Feito pela Connect Alpha.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body class="carregando">
+
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader-risco" aria-hidden="true"></div>
+  <p class="loader-txt">Apagando as luzes <span id="loaderPct">0</span>%</p>
+</div>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#tunel" aria-label="Início"><span class="marca-play" aria-hidden="true"></span><span class="marca-nome">O túnel do catálogo</span></a>
+  <div class="topo-acoes">
+    <button class="btn-som" id="btnSom" type="button" aria-pressed="false" title="Ligar o som (M)"><span class="btn-som-ico" aria-hidden="true"></span><span class="btn-som-txt">Som</span></button>
+    <a class="btn btn-vermelho" href="#fim">Assistir agora</a>
+  </div>
+</header>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="vinheta" aria-hidden="true"></div>
+<div class="dica" id="dica" aria-hidden="true"></div>
+
+<main>
+  <section class="palco-alto" id="tunel" style="--n:5">
+    <div class="stage" id="stage" data-c="0">
+      <div class="fantasma" id="fantasma" aria-hidden="true"></div>
+
+      <div class="paineis">
+        <article class="painel on" data-c="0" aria-label="Abertura">
+          <p class="rotulo"><span class="rec" aria-hidden="true"></span>Conceito independente · Connect Alpha</p>
+          <h1 class="t-big"><span class="ln"><span>Antes do play,</span></span><span class="ln vermelho"><span>o escuro.</span></span></h1>
+          <p class="sub">Role devagar. A sala vai acender, e você atravessa o catálogo inteiro.</p>
+        </article>
+
+        <article class="painel" data-c="1" aria-label="Catálogo">
+          <p class="rotulo">Capítulo 01 · <b>Catálogo</b></p>
+          <h2 class="t-big"><span class="ln"><span>Milhares de histórias.</span></span><span class="ln vermelho"><span>Uma só noite.</span></span></h2>
+          <p class="sub">Passe pelas paredes de pôsteres. Clique em qualquer um para abrir o título.</p>
+        </article>
+
+        <article class="painel" data-c="2" aria-label="Gêneros">
+          <p class="rotulo">Capítulo 02 · <b>Gêneros</b></p>
+          <h2 class="t-big"><span class="ln"><span>Cada zona,</span></span><span class="ln vermelho"><span>um clima.</span></span></h2>
+          <p class="sub">A luz muda, o som muda, a história muda. Ação, terror, romance, ficção, comédia e documentário.</p>
+        </article>
+
+        <article class="painel" data-c="3" aria-label="Maratona">
+          <p class="rotulo">Capítulo 03 · <b>Maratona</b></p>
+          <h2 class="t-big"><span class="ln"><span>Só mais</span></span><span class="ln vermelho"><span>um episódio.</span></span></h2>
+          <p class="sub">São três da manhã e o próximo já está carregando. A gente sabe como termina.</p>
+          <div class="proximo" id="proximo" aria-hidden="true">
+            <div class="proximo-capa"></div>
+            <div class="proximo-txt"><small>Próximo episódio em</small><b><span id="proxN">5</span> s</b></div>
+            <div class="proximo-bar"><i></i></div>
+          </div>
+        </article>
+
+        <article class="painel" data-c="4" aria-label="Escolha">
+          <p class="rotulo">Capítulo 04 · <b>Sala</b></p>
+          <h2 class="t-big"><span class="ln"><span>Escolha</span></span><span class="ln vermelho"><span>o seu.</span></span></h2>
+          <p class="sub">Cinco títulos em cartaz. Clique em um pôster, ou aperte o play na tela.</p>
+        </article>
+      </div>
+
+      <div class="role" aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="perguntas">
+    <div class="sec-in">
+      <p class="rotulo">Perguntas</p>
+      <h2 class="t-sec">O que <span class="vermelho">perguntam.</span></h2>
+      <div class="faq">
+        <details><summary>Este é o site oficial da Netflix?</summary><p>Não. É um projeto conceitual independente, criado pela Connect Alpha para mostrar direção de arte e navegação 3D. Não tem relação, patrocínio nem aprovação da Netflix.</p></details>
+        <details><summary>Os filmes e séries existem?</summary><p>Não. Todos os títulos, sinopses e pôsteres são fictícios e foram criados para este conceito, desenhados em código. Nenhuma obra real é usada.</p></details>
+        <details><summary>O que acontece quando eu clico em um pôster?</summary><p>Abre a ficha do título. Em "Assistir" você vê uma abertura animada, feita na hora, no seu navegador.</p></details>
+        <details><summary>De onde vem o som?</summary><p>É sintetizado no navegador (Web Audio): o vento do túnel que acompanha a sua velocidade e o impacto da abertura. Liga e desliga no botão Som ou na tecla M.</p></details>
+        <details><summary>Dá para fazer algo assim para a minha marca?</summary><p>Dá. Um catálogo, um cardápio, um portfólio ou uma coleção de produtos pode virar um túnel assim. Chame a Connect Alpha no WhatsApp.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="fim" id="fim">
+    <div class="fim-in">
+      <p class="rotulo">Fim da sessão</p>
+      <h2 class="t-fim">Seu catálogo, <span class="vermelho">sua sala.</span></h2>
+      <p class="sub">Conceito independente feito pela Connect Alpha. Quer uma experiência assim para a sua marca?</p>
+      <div class="cta-linha">
+        <a class="btn btn-vermelho grande" href="https://wa.me/5535998872633?text=Oi!%20Vi%20o%20conceito%20da%20Netflix%20e%20quero%20uma%20experi%C3%AAncia%20assim." rel="noopener">Falar com a Connect Alpha</a>
+        <a class="btn btn-fantasma grande" href="#tunel" id="btnTopo">Atravessar de novo</a>
+      </div>
+    </div>
+    <footer class="rodape">
+      <p>Projeto conceitual independente. Não é oficial e não tem relação com a Netflix, Inc. Títulos, sinopses e pôsteres são fictícios; nenhuma obra real é reproduzida.</p>
+      <p>Feito por Connect Alpha · Lavras, MG</p>
+    </footer>
+  </section>
+</main>
+
+<!-- barra de player: progresso da jornada -->
+<div class="player" id="player" aria-label="Progresso da jornada">
+  <button class="player-btn" id="btnTopoPlayer" type="button" aria-label="Voltar ao início"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+  <div class="player-trilho" id="trilho"><i id="trilhoBarra"></i><b id="trilhoBola"></b>
+    <span class="tick" style="left:0%" data-i="0"></span><span class="tick" style="left:14%" data-i="1"></span><span class="tick" style="left:34%" data-i="2"></span><span class="tick" style="left:62%" data-i="3"></span><span class="tick" style="left:80%" data-i="4"></span>
+  </div>
+  <span class="player-tempo" id="tempo">0:00 / 3:00</span>
+  <span class="player-cap" id="capNome">Abertura</span>
+</div>
+
+<!-- modal do título -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitulo" hidden>
+  <div class="modal-caixa" id="modalCaixa">
+    <button class="modal-fechar" id="mFechar" type="button" aria-label="Fechar">×</button>
+    <div class="modal-ficha" id="mFicha">
+      <canvas class="modal-poster" id="mPoster" width="512" height="768"></canvas>
+      <div class="modal-info">
+        <p class="rotulo" id="mGenero">Ação</p>
+        <h2 class="modal-titulo" id="mTitulo">Título</h2>
+        <p class="modal-tag" id="mTag"></p>
+        <p class="modal-sin" id="mSin"></p>
+        <p class="modal-meta" id="mMeta"></p>
+        <div class="cta-linha">
+          <button class="btn btn-claro grande" type="button" id="mAssistir">▶ Assistir (conceito)</button>
+          <button class="btn btn-fantasma grande" type="button" id="mVoltar">Voltar ao túnel</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-tela" id="mTela" hidden>
+      <canvas id="mAbertura" width="1280" height="720"></canvas>
+      <button class="btn btn-fantasma" type="button" id="mSair">Sair da sessão</button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="js/cena.js?v=8"></script>
+<script src="js/main.js?v=1"></script>
+</body>
+</html>

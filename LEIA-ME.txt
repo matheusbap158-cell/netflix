@@ -1,0 +1,42 @@
+NETFLIX · O TÚNEL DO CATÁLOGO · CONCEITO CONNECT ALPHA
+Projeto conceitual independente. Não é oficial e não tem relação com a Netflix, Inc. Só local (sem git, sem publicação).
+Feito em 13/10/2026.
+
+COMO VER
+  node "_ferramentas/preview-local.mjs" "4. Meus Clientes/2. Demos e propostas/netflix" 8796
+  (rodar da pasta raiz "Connect Alpha") e abrir http://localhost:8796
+
+CONCEITO
+  A rolagem leva a câmera por um túnel 3D de pôsteres (WebGL / Three.js r128 local). Seis zonas de gênero
+  (Ação, Terror, Romance, Ficção, Comédia, Documentário), cada uma com cor de luz e estilo de pôster próprios.
+  00 Abertura   cortinas se abrem sobre um risco de luz vermelho
+  01 Catálogo   paredes de pôsteres; clique em qualquer um para abrir a ficha
+  02 Gêneros    a zona muda de cor e aparece o nome gigante do gênero
+  03 Maratona   cartão "Próximo episódio em 5 s" com contagem
+  04 Sala       tela com os títulos em cartaz + 5 pôsteres em destaque (clique ou play na tela)
+  Barra de player no rodapé: progresso, tempo (3:00), marcadores de capítulo clicáveis.
+  Modal do título: ficha (pôster, sinopse, meta) e botão Assistir, que toca uma ABERTURA animada
+  (risco de luz, título letra a letra, golpe grave) feita na hora em canvas.
+
+TÍTULOS E PÔSTERES
+  18 títulos 100% fictícios (3 por gênero), pôsteres pintados em código (canvas 2D) com motivo por gênero.
+  Nenhuma obra real, imagem ou logotipo oficial é usado. A palavra "Netflix" aparece só em texto, com aviso
+  de conceito independente no FAQ e no rodapé.
+
+SOM (botão Som ou tecla M)
+  Vento do túnel que acompanha a velocidade de rolagem + zumbido grave + golpe de abertura. Tudo sintetizado.
+
+ARQUIVOS
+  index.html · css/style.css · js/cena.js (cena 3D, pôsteres, raycast) · js/main.js (rolagem, player, som, modal)
+  vendor/three.min.js + gsap.min.js (locais) · assets/favicon.svg
+
+ARMADILHAS RESOLVIDAS
+  - Cores hex no Three r128 são lineares: com outputEncoding sRGB, 0x0b0b0b vira cinza claro. Para paredes usar 0x000000
+    e para névoa usar pow(cor, 2.2) * pequeno.
+  - Texto letra a letra em canvas: forçar textAlign "left" dentro da função, senão letras estreitas (I) somem.
+  - Telas verticais: abrir o FOV conforme o aspecto.
+
+PENDÊNCIAS ANTES DE PUBLICAR
+  - Teste em celular real (WebGL + 5 capítulos + modal).
+  - og.jpg para compartilhamento (dá para tirar do túnel).
+  - Publicar só com OK do usuário e URL do repositório.
